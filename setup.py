@@ -1,18 +1,12 @@
 from setuptools import setup, find_packages
 
 
-def parse_requirements(filename):
-    """ load requirements from a pip requirements file """
-    lineiter = (line.strip() for line in open(filename))
-    return [line for line in lineiter if line and not line.startswith("#")]
-
-
-version = '1.0.3'
+version = '1.0.3.2'
 
 README="""Small Python library for process SRP requests for AWS Cognito. This library was initially included in the [Warrant](https://www.github.com/capless/warrant) library. We decided to separate it because not all projects and workfows need all of the helper classes and functions in Warrant."""
 
 setup(
-    name='warrant-lite',
+    name='warrant-lite42',
     version=version,
     description=README,
     long_description=README,
@@ -28,7 +22,12 @@ setup(
     packages=find_packages(),
     url='https://github.com/capless/warrant-lite',
     license='Apache License 2.0',
-    install_requires=parse_requirements('requirements.txt'),
+    install_requires=[
+        'boto3>=1.4.3',
+        'envs>=1.2.4',
+        'python-jose>=3.0.0',
+        'requests>=2.18.4',
+    ],
     include_package_data=True,
     zip_safe=True,
 
